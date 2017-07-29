@@ -140,7 +140,7 @@ i {
 
 .btn-new { top: 45px;}
 .btn-roll { top: 403px;}
-.btn-hold { top: 467px;}
+.btn-hold { top: 467px;font-size: 100%;}
 
 .dice {
     position: absolute;
