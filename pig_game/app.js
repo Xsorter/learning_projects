@@ -3,22 +3,31 @@ var scores, roundScore, activePlayer, gamePlaying;
 
 init();
 
+var lastTry;
+
 document.querySelector('.btn-roll').addEventListener('click', function(){
 
 	if(gamePlaying){
 		var dice = Math.floor(Math.random()*6)+1;
+
 		var diceSelector = document.querySelector('.dice');
 		diceSelector.style.display = 'block';
 		diceSelector.src = 'dice-'+dice+'.png';
 
-		if(dice !== 1){
+		if(dice===6 && lastTry===6){
+			scores[activePlayer] = 0;
+			document.querySelector('#score-' + activePlayer).textContent = '0';
+			nextPlayer();
+		}else if(dice !== 1){
 			roundScore += dice;
 			document.querySelector('#current-' + activePlayer).textContent = roundScore;
 		}else{
 			nextPlayer();
 		}
-	}
 
+		lastTry = dice;
+		
+	}
 
 });
 
